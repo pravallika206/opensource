@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner SC = new Scanner(System.in);
+        int N = SC.nextInt();
+        int[] attendence = new int[N];
+        for(int i = 0; i< N; i++) {
+            attendence[i] = SC.nextInt();
+        }
+        int maxAbsent = 0;
+        int currentAbsent = 0;
+        for(int i = 0; i < N; i++) {
+            if (attendence[i] == 0) {
+                currentAbsent++;
+                
+            } else {
+                if (currentAbsent > maxAbsent) {
+                    maxAbsent = currentAbsent;
+                }
+                currentAbsent = 0;
+            }
+        }
+        if (currentAbsent > maxAbsent) {
+            maxAbsent = currentAbsent;
+        }
+        System.out.println(maxAbsent);
+    }
+}

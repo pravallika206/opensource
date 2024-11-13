@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class AjayCouponDecision {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        
+        int T = scanner.nextInt();
+        
+        
+        for (int t = 0; t < T; t++) {
+            
+            int N = scanner.nextInt();
+            int X = scanner.nextInt();
+            int Y = scanner.nextInt();
+            
+            
+            int[] prices = new int[N];
+            int totalCostWithoutCoupon = 0;
+            for (int i = 0; i < N; i++) {
+                prices[i] = scanner.nextInt();
+                totalCostWithoutCoupon += prices[i];
+            }
+            
+            
+            int totalCostWithCoupon = X; 
+            for (int price : prices) {
+                
+                int effectivePrice = Math.max(0, price - Y);
+                totalCostWithCoupon += effectivePrice;
+            }
+            
+            
+            if (totalCostWithCoupon < totalCostWithoutCoupon) {
+                System.out.println("COUPON");
+            } else {
+                System.out.println("NO COUPON");
+            }
+        }
+        
+        
+        scanner.close();
+    }
+}
